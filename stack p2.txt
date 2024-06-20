@@ -1,0 +1,32 @@
+I a tyre factory many workers are working there each worker is assigned with a integer number which help them to find their Supervisor. the project Manager having an Array that consist of a integer numbers help the project Manager to find thier supervisors. Supervisor will be assinged as the first largest integer find on the right side of the array if not found return -1.
+
+i/p: [3,5,2,14,5,3,7,9,4,6,9,4,2,5,3] o/p:=[5,14,14,-1,7,7,9,-1,6,9,-1,5,5,-1,-1]
+
+class Stack:
+    def __init__(self):
+        self.items = []
+    def push(self,data):
+        self.items.append(data)
+    def pop(self):
+        return self.items.pop()
+    def size(self):
+        return len(self.items)
+    def top(self):
+        return self.items[-1]
+
+        
+L= [3,5,2,14,5,3,7,9,4,6,9,4,2,5,3]
+O=[0]*len(L)
+s= Stack()
+for i in range(len(L)-1,-1,-1):
+    if s.size() != 0:
+        while s.size() !=0 and s.top()<=L[i]:
+            if s.top() <= L[i]:
+                s.pop()
+    if s.size() == 0:
+        O[i]=-1
+    else:
+        O[i]=s.top()
+    s.push(L[i])
+print(O)
+[5, 14, 14, -1, 7, 7, 9, -1, 6, 9, -1, 5, 5, -1, -1]
